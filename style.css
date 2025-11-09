@@ -1,8 +1,14 @@
-body { font-family: 'Arial', sans-serif; }
-#game-container { max-width: 500px; }
-.tile {
-  width: 60px; height: 60px; background: #0ff; border: 2px solid #0ff;
-  display: flex; align-items: center; justify-content: center; font-weight: bold;
-  cursor: pointer; transition: transform 0.3s, background 0.3s;
+#game-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  width: 100vw;
+  height: 100vh;
+  justify-items: center;
+  align-items: center;
 }
-.tile.correct { background: #0f0; border-color: #0f0; }
+.tile {
+  font-size: 5rem; /* Big emoji tiles */
+  cursor: pointer;
+  transition: transform 0.3s;
+}
