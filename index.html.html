@@ -3,17 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quantum Shift</title>
+<title>Quantum Flip</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-900 text-white flex flex-col items-center p-6">
-<h1 class="text-4xl font-bold mb-4">Quantum Shift</h1>
-<div id="game-container" class="grid grid-cols-5 gap-2"></div>
-<div class="mt-4">
-  <button id="resetBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Reset Level</button>
-</div>
-<div id="status" class="mt-2"></div>
+<body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen p-4">
+  <h1 class="text-6xl font-extrabold mb-8 text-cyan-400 drop-shadow-lg">💎 Quantum Flip 💎</h1>
+
+  <div id="game-container" class="grid grid-cols-5 gap-6 w-full max-w-5xl"></div>
+
+  <div class="mt-8 flex space-x-4">
+    <button id="resetBtn" class="px-6 py-3 bg-cyan-500 hover:bg-cyan-700 rounded-lg font-bold text-xl drop-shadow-lg">Reset Level</button>
+    <button id="nextBtn" class="px-6 py-3 bg-purple-500 hover:bg-purple-700 rounded-lg font-bold text-xl drop-shadow-lg">Next Level</button>
+  </div>
+
+  <div id="status" class="mt-6 text-2xl font-bold text-yellow-400 drop-shadow-lg"></div>
+
 <script src="game.js"></script>
 </body>
 </html>
