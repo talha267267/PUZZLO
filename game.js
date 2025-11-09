@@ -1,38 +1,49 @@
-let currentLevel = 0;
-let levels = [];
-let container = document.getElementById('game-container');
-let status = document.getElementById('status');
-
-async function loadLevels() {
-  levels = await fetch('levels.json').then(r => r.json());
-  renderLevel();
-}
-
-function renderLevel() {
-  container.innerHTML = '';
-  const grid = levels[currentLevel].grid;
-  grid.flat().forEach((val, idx) => {
-    const tile = document.createElement('div');
-    tile.classList.add('tile');
-    tile.innerText = val;
-    tile.dataset.idx = idx;
-    tile.onclick = () => {
-      tile.innerText = (parseInt(tile.innerText)+1)%3;
-      checkGoal();
+{
+  "gameTitle": "Emoji Flip Challenge",
+  "settings": {
+    "gridSize": 4,
+    "theme": "cyber",
+    "fullscreen": true,
+    "flipAnimation": "smooth"
+  },
+  "levels": [
+    {
+      "level": 1,
+      "timeLimit": 60,
+      "targetScore": 100,
+      "tiles": [
+        "🟩","🟩","🟦","🟦",
+        "🟧","🟧","🟪","🟪",
+        "🟥","🟥","🟨","🟨",
+        "🟫","🟫","⬛","⬛"
+      ]
+    },
+    {
+      "level": 2,
+      "timeLimit": 50,
+      "targetScore": 200,
+      "tiles": [
+        "🐱","🐱","🐶","🐶",
+        "🦊","🦊","🐻","🐻",
+        "🐼","🐼","🐨","🐨",
+        "🦁","🦁","🐯","🐯"
+      ]
+    },
+    {
+      "level": 3,
+      "timeLimit": 40,
+      "targetScore": 300,
+      "tiles": [
+        "🚀","🚀","🛸","🛸",
+        "🤖","🤖","👾","👾",
+        "🛰️","🛰️","🛸","🛸",
+        "👽","👽","🤖","🤖"
+      ]
     }
-    container.appendChild(tile);
-  });
+  ],
+  "rewards": [
+    {"score": 100, "badge": "Bronze Cyber"},
+    {"score": 200, "badge": "Silver Cyber"},
+    {"score": 300, "badge": "Gold Cyber"}
+  ]
 }
-
-function checkGoal() {
-  const tiles = Array.from(container.children).map(t => parseInt(t.innerText));
-  const goal = levels[currentLevel].goal.flat();
-  if(tiles.every((v,i)=>v===goal[i])){
-    status.innerText = 'Level Completed!';
-  } else {
-    status.innerText = '';
-  }
-}
-
-document.getElementById('resetBtn').onclick = renderLevel;
-loadLevels();
